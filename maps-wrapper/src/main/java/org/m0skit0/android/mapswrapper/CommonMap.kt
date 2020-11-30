@@ -9,10 +9,10 @@ import org.m0skit0.android.mapswrapper.model.*
 
 class CommonMap(private val map: Any) {
 
-    private val google: GoogleMap
+    val google: GoogleMap
         get() = map as GoogleMap
 
-    private val huawei: HuaweiMap
+    val huawei: HuaweiMap
         get() = map as HuaweiMap
 
     var mapType: Int
@@ -76,9 +76,9 @@ class CommonMap(private val map: Any) {
     val myLocation: Location
         get() = googleOrHuawei({ myLocation }, { throwNotSupported() })
 
-    private fun isGoogle(): Boolean = map is GoogleMap
+    fun isGoogle(): Boolean = map is GoogleMap
 
-    private fun isHuawei(): Boolean = map is HuaweiMap
+    fun isHuawei(): Boolean = map is HuaweiMap
 
     private inline fun <T> googleOrHuawei(google: GoogleMap.() -> T, huawei: HuaweiMap.() -> T): T =
         when {
