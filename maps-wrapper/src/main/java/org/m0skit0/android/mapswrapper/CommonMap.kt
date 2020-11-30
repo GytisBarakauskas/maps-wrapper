@@ -109,6 +109,13 @@ class CommonMap(private val map: Any) {
         )
     }
 
+    fun setMapStyle(options: MapStyleOptions) {
+        googleOrHuawei(
+            { setMapStyle(options.google) },
+            { setMapStyle(options.huawei) }
+        )
+    }
+
     fun animateCamera(cameraUpdate: CameraUpdate) {
         googleOrHuawei(
             { animateCamera(cameraUpdate.google) },
